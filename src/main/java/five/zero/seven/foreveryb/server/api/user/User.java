@@ -1,5 +1,5 @@
 /**
- * 版权所有(C)，上海海鼎信息工程股份有限公司，2017，所有权利保留。
+ * IdeasForever，2017。
  * 
  * 项目名：	IdeasForeverFivezeroseven
  * 文件名：	User.java
