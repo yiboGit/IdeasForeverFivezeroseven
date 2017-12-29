@@ -90,7 +90,7 @@
       <version>4.0.4.RELEASE</version>
     </dependency>
 
-    <!-- JSON: jackson jackson1.9核心库和jackson 2.x的三大包 暂时全部依赖 -->
+    <!-- JSON: jackson jackson 2.x的三大包 jackson1.9核心库暂时去掉 -->
     <!-- <dependency> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-core-asl</artifactId> <version>1.9.12</version> 
       </dependency> <dependency> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-lgpl</artifactId> <version>1.9.12</version> 
       </dependency> -->
