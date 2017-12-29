@@ -35,9 +35,6 @@
   <bean
     class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor" />
     
-  <!-- mybatis:scan会将five.zero.seven.foreveryb.server.mappers包里的所有接口当作mapper配置，之后可以自动引入mapper类 -->
-  <mybatis:scan base-package="five.zero.seven.foreveryb.server.mappers" />
-   
   <!-- 加载读取property配置文件 ,PropertyPlaceholderConfigurer(容器后处理器)支持从properties文件中读入配置并注入到bean中 -->
   <bean
     class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -52,6 +49,9 @@
     </property>
   </bean>
   
+  <!-- mybatis:scan会将five.zero.seven.foreveryb.server.mappers包里的所有接口当作mapper配置，之后可以自动引入mapper类 -->
+  <mybatis:scan base-package="five.zero.seven.foreveryb.server.mappers" />
+  
   <!-- Mybatis数据库配置 -->
   <!-- 配置数据源 -->
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -62,7 +62,7 @@
     <property name="password" value="${jdbc.password}" />
   </bean>
   
-  <!-- 配置 sqlSessionFactory -->
+  <!-- 配置 sqlSessionFactory 暂时先不引入mybatis的配置文件  未来会引入 xml写sql语句的有点还是好太多了-->
   <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <!-- 数据源的设置 -->
     <property name="dataSource" ref="dataSource" />
