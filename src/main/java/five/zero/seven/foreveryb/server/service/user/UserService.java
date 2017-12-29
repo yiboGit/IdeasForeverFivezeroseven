@@ -43,6 +43,6 @@ public interface UserService {
    * @param id
    * @return     
    */
-  public Object getUser(String uuid); 
+  public User getUser(String uuid); 
   
 }

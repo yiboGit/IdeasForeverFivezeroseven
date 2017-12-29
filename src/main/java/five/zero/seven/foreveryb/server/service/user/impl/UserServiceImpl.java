@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
    * @param id
    * @return
    */
-  public Object getUser(String uuid) {
+  public User getUser(String uuid) {
     User user = userDao.findUserById(uuid);
     if (user == null) {
       user = userDao.findUserByUname(uuid);

@@ -11,6 +11,7 @@ package five.zero.seven.foreveryb.web.user;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +24,7 @@ import five.zero.seven.foreveryb.server.api.user.User;
 import five.zero.seven.foreveryb.server.service.user.UserService;
 
 /**
- * Title: 用户管理 
- * Description: 对用户资源的增删改查
+ * Title: 用户管理 Description: 对用户资源的增删改查
  *
  * @author wangyibo
  *
@@ -32,13 +32,13 @@ import five.zero.seven.foreveryb.server.service.user.UserService;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-  
+
   @Autowired
   private UserService userService;
-  
-  /** Log4j日志处理*/
+
+  /** Log4j日志处理 */
   private static final Logger log = Logger.getLogger(UserController.class);
-  
+
   /**
    * @description 获取指定Id的用户
    * @param uuid
@@ -46,23 +46,29 @@ public class UserController {
    */
   @RequestMapping(value = "/user/{uuid}", method = RequestMethod.GET, produces = "application/json")
   public User getUser(@PathVariable("uuid") String uuid) {
-      User user = (User) userService.getUser(uuid);
-      log.debug("查询用户 :" + user);
-      return user;
+    User user = userService.getUser(uuid);
+    log.debug("查询用户 :" + user);
+    return user;
   }
 
   /**
    * @description 添加指定Id的用户
    * @author rico
    * @return
-   * @throws Exception 
+   * @throws Exception
    */
-  @RequestMapping(value = "/user", method = RequestMethod.PUT, produces = "application/json", 
-          consumes = "application/json")
+  @RequestMapping(value = "/user", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
   public User addUser(@RequestBody @Valid User user) throws Exception {
-      userService.saveUser(user);
+    if (user == null)
+      return null;
+
+    if (StringUtils.isBlank(user.getUuid())) {
       log.debug("添加用户 :" + user);
-      return user;
+    } else {
+      log.debug("保存用户 :" + user);
+    }
+    userService.saveUser(user);
+    return user;
   }
 
 }
