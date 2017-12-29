@@ -46,7 +46,7 @@ public interface UserDao {
    * @description 持久化用户，向数据库插入一条用户记录
    * @param user     
    */
-  @Insert("update idear_yb_user set version=#{version}, code=#{code}, name=#{name}, passwd=#{passwd}, gentle=#{gentle}, email=#{email}, city=#{city} where uuid=#{uuid}")
+  @Insert("update idear_yb_user set code=#{code}, name=#{name}, passwd=#{passwd}, gentle=#{gentle}, email=#{email}, city=#{city} where uuid=#{uuid}")
   public void saveUser(User user);
   
     
