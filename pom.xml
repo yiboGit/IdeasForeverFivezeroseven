@@ -130,6 +130,7 @@
     <finalName>IdeasForeveFivezeroseven</finalName>
     <plugins>
       <!-- Maven集成Tomcat插件,tomcat7和tomcat8均可以使用该插件。 需要注意的是，即使使用tomcat8， 此处server标签的值也必须设置为tomcat7 -->
+       <!--PS： 这部分你可以选择使用， 因为你可以直接把项目丢到Tomcat 进行运行， 加入插件只是提供一种方便的开发方式， 具体到方方面面 我也不太清楚啦~~ 自己上网查 我也在学习中~~~-->
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
