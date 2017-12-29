@@ -72,6 +72,7 @@ public class UserServiceImpl implements UserService {
       
       //验证版本号
       safeGet(user.getUuid(), user.getVersion());
+      //数据库设置一下 版本号为自增
       long version = user.getVersion() + 1;
       user.setVersion(version);
       userDao.saveUser(user);
