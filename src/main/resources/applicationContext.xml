@@ -114,14 +114,14 @@
     <constructor-arg name="port" value="${redis.port}" />
   </bean>-->
 
-  <!--做权限认证  -->
+  <!--做权限认证
   <bean id="securityAspect" class="five.zero.seven.foreveryb.footstone.base.aspect.SecurityAspect"> 
-    <property name="tokenManager" ref="tokenManager" /> 
+    <property name="tokenManager" ref="footstone_authorization_token_tokenManager" />  
     <property name="tokenName"  value="X-Token" /> 
-  </bean>
+  </bean>-->
   <!--token的管理  -->
-  <bean id="tokenManager" class="five.zero.seven.foreveryb.footstone.authorization.token.DefaultTokenManager" />
-  
+ <!-- <bean id="tokenManager" class="five.zero.seven.foreveryb.footstone.authorization.token.DefaultTokenManager" />
+   --> 
   <!--面向切面编程 -->
   <aop:config> 
         <aop:aspect ref="securityAspect"> 
