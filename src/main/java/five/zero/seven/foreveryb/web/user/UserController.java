@@ -9,6 +9,8 @@
  */
 package five.zero.seven.foreveryb.web.user;
 
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import five.zero.seven.foreveryb.server.api.user.User;
+import five.zero.seven.foreveryb.footstone.base.annotation.IgnoreSecurity;
+import five.zero.seven.foreveryb.server.pojo.user.User;
 import five.zero.seven.foreveryb.server.service.user.UserService;
 
 /**
@@ -58,6 +61,7 @@ public class UserController {
    * @throws Exception
    */
   @RequestMapping(value = "/user", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
+  @IgnoreSecurity
   public User addUser(@RequestBody @Valid User user) throws Exception {
     if (user == null)
       return null;
@@ -67,6 +71,7 @@ public class UserController {
     } else {
       log.debug("保存用户 :" + user);
     }
+    user.setCreateTime(new Date());
     userService.saveUser(user);
     return user;
   }

@@ -17,6 +17,8 @@ package five.zero.seven.foreveryb.server.service.user.message;
 public class UserMessage {
   
  public static final String noUser = "当前用户不存在";
+ 
+ public static final String uuidNotSame = "当前用户存在异常";
   
  public static final String noVersion = "当前操作版本号不一致";
  

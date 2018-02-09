@@ -7,7 +7,9 @@
  * 修改历史：
  * 2017年12月27日 - wangyibo - 创建。
  */
-package five.zero.seven.foreveryb.server.api.user;
+package five.zero.seven.foreveryb.server.pojo.user;
+
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,6 +21,7 @@ import five.zero.seven.foreveryb.footstone.base.entity.VersionedEntity;
  * @author wangyibo
  *
  */
+@Table(name = "user")
 public class User extends VersionedEntity implements HasUCN{
 
   /**

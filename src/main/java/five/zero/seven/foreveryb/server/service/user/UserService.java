@@ -9,11 +9,13 @@
  */
 package five.zero.seven.foreveryb.server.service.user;
 
-import five.zero.seven.foreveryb.server.api.user.User;
+import com.github.pagehelper.PageInfo;
+
+import five.zero.seven.foreveryb.footstone.base.query.QueryFilter;
+import five.zero.seven.foreveryb.server.pojo.user.User;
 
 /**
- * UserService 用户
- * 对用户相关的业务逻辑的抽象(面向接口编程)
+ * UserService 用户 对用户相关的业务逻辑的抽象(面向接口编程)
  * 
  * @author wangyibo
  *
@@ -22,27 +24,42 @@ public interface UserService {
 
   /** 用于在Spring容器的默认ID。 */
   public static final String DEFAULT_CONTEXT_ID = "server-service-user.deviceService";
-  
-  /**     
+
+  /**
    * @description 用户登录逻辑
    * @param name
    * @param passwd
-   * @return     
+   * @return
    */
   public boolean login(String name, String passwd);
-  
-  /**     
+
+  /**
    * @description 用户注册逻辑
    * @param User
-   * @return     
+   * @return
    */
   public void saveUser(User user) throws Exception;
-  
-  /**     
-   * @description  用户获取逻辑
+
+  /**
+   * @description 用户获取逻辑
    * @param id
-   * @return     
+   * @return
    */
-  public User getUser(String uuid); 
+  public User getUser(String uuid);
+
+  /**
+   * @description 用户查询逻辑，使用mapper.xml手动书写sql实现
+   * @param params
+   * @return
+   */
+  public PageInfo<User> queryUser(QueryFilter filter) throws Exception;
+  
+  /**
+   * @description 用户查询逻辑，使用通用mapper实现
+   * @param params
+   * @return
+   */
+  public PageInfo<User> selectAllUsers(QueryFilter filter) throws Exception;
+  
   
 }
