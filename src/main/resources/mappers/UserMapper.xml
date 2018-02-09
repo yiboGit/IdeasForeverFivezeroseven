@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="five.zero.seven.foreveryb.server.mappers.user.UserMapper">
+
+  <resultMap id="userQueryResult" type="five.zero.seven.foreveryb.server.pojo.user.User">
+    <id property="id" column="id" />
+    <result property="uuid" column="uuid" />
+    <result property="version" column="version" />
+    <result property="versionTime" column="version_time" />
+    <result property="createTime" column="create_time" />
+    <result property="code" column="code" />
+    <result property="name" column="name" />
+    <result property="passwd" column="passwd" />
+    <result property="gentle" column="gentle" />
+    <result property="email" column="email" />
+    <result property="city" column="city" />
+  </resultMap>
+
+  <select id="query" parameterType="five.zero.seven.foreveryb.footstone.base.query.QueryFilter" resultMap="userQueryResult">
+    select * from user
+    <where>
+      <choose>
+        <when test="keyWord != null">
+          name like concat('%',#{keyWord},'%') or code like concat('%',#{keyWord},'%')
+        </when>
+        <when test="filter != null">
+          <if test="filter.code != null">
+            code = #{filter.code}
+          </if>
+          <if test="filter.name != null">
+            and name = #{filter.name}
+          </if>
+          <if test="filter.gentle != null">
+            and gentle = #{filter.gentle}
+          </if>
+          <if test="filter.email != null">
+            and email = #{filter.email}
+          </if>
+          <if test="filter.city != null">
+            and city = #{filter.city}
+          </if>
+        </when>
+      </choose>
+    </where>
+    order by
+    <choose>
+      <when test="sorts != null">
+        <if test="sorts.name != null">
+          name #{sorts.name},
+        </if>
+        <if test="sorts.code != null">
+          code #{sorts.code},
+        </if>
+        <if test="sorts.gentle != null">
+          gentle #{sorts.gentle},
+        </if>
+        <if test="sorts.city != null">
+          city #{sorts.city},
+        </if>
+      </when>
+    </choose>
+    id desc
+  </select>
+
+</mapper>
